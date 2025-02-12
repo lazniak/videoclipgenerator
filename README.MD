@@ -1,8 +1,13 @@
 # Vibe Music Engine for ComfyUI
 
+
+
 ## Overview
 
 Vibe Music Engine is a custom node plugin for [ComfyUI](https://github.com/comfyanonymous/ComfyUI) that processes audio input using OpenAI’s Whisper models. It provides transcription, translation, and precise word-level timing—perfect for generating subtitles and edit decision lists (EDL) for video editing workflows. In addition, it features beat detection to synchronize video cuts with the music rhythm.
+
+![Vibe Music Engine](VibeMusicEngine.png)
+
 
 ## Features
 
