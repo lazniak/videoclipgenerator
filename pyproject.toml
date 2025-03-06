@@ -1,7 +1,7 @@
 [project]
 name = "videoclipgenerator"
 description = "Vibe Music Engine is a custom node  that processes audio input using OpenAI’s Whisper models. It provides transcription, translation, and precise word-level timing—perfect for generating subtitles and edit decision lists (EDL) for video editing workflows. In addition, it features beat detection to synchronize video cuts with the music rhythm. You can generate full-lenght video based on song words with Automatic prompting the img2video i2v or text2video."
-version = "1.1.0"
+version = "1.1.1"
 license = {file = "LICENSE"}
 dependencies = [ "ffmpeg-python==0.2.0", "openai-whisper", "numba>=0.58.0", "anthropic>=0.5.0", "requests>=2.31.0", "psutil>=5.9.5", "python-dotenv>=1.0.0", "pysrt>=1.1.2"]
 
