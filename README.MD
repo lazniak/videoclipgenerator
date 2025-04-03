@@ -1159,12 +1159,9 @@ Paul is a Polish-speaking content creator focusing on technology and digital too
 Paul's contributions to the Polish film industry are documented in the Polish Film Database. He is also known for his thought leadership in digital and virtual realities.
 
 ### Connect with Paul
-* Website: hexart.pl
+* Website: [AI EGO](https://aiego.pl)
 * YouTube: [@Lazniak](https://youtube.com/@lazniak)
-* Facebook: PabloGFX
-* Twitter: @PabloGFX
-* GitHub: github.com/PabloGFX
-* LinkedIn: linkedin.com/in/paul-lazniak
+
 
 To learn more about Paul's journey and work, check out his bio video.
 
