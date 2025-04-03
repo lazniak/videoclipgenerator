@@ -1127,11 +1127,7 @@ If you find this package useful, consider supporting its development:
 
 ☕ **[Buy Me a Coffee](https://buymeacoffee.com/eyb8tkx3to)** - Your support helps maintain and improve these nodes!
 
-## To-Do List
-* Implement more advanced sorting and filtering options
-* Enhance error handling and user feedback
-* Optimize performance for large image libraries
-* Develop more integration options with other ComfyUI nodes
+
 
 ## About the Creator
 
