@@ -1117,43 +1117,57 @@ Text effects system provides:
 - Background shapes and containers
 - Stroke effects with width and style options
 
-##Support
+## Support
+
 If you encounter any issues or have questions, please file an issue on the GitHub repository. For more detailed support or custom development inquiries, you can reach out to Paul directly through his social media channels or website.
-Support Development
+
+### Support Development
+
 If you find this package useful, consider supporting its development:
-##☕ Buy Me a Coffee - Your support helps maintain and improve these nodes!
-To-Do List
 
-##Implement more advanced sorting and filtering options
-Enhance error handling and user feedback
-Optimize performance for large image libraries
-Develop more integration options with other ComfyUI nodes
+☕ **[Buy Me a Coffee](https://buymeacoffee.com/eyb8tkx3to)** - Your support helps maintain and improve these nodes!
 
-##About the Creator
+## To-Do List
+* Implement more advanced sorting and filtering options
+* Enhance error handling and user feedback
+* Optimize performance for large image libraries
+* Develop more integration options with other ComfyUI nodes
+
+## About the Creator
+
 This ComfyUI CustomNode was created by Paul Lazniak (Paweł Łaźniak), also known as PabloGFX. Paul is a multifaceted professional with extensive experience in software development, filmmaking, VFX artistry, and entrepreneurship.
-Professional Background
+
+### Professional Background
+
 Paul began his career in the early 2000s, working on various projects for prominent Polish TV stations such as MTV, TVN, and TVP. His expertise spans compositing, editing, special effects, and software development.
+
 As an innovator in virtual reality (VR), Paul co-founded the VR Visio Group, which later evolved into Ignibit S.A., one of Poland's leading companies focused on virtual reality and immersive technologies.
-Current Ventures
+
+### Current Ventures
+
 Paul is currently involved in developing new projects through his companies:
+* HexArt: Combining cinematography with advanced digital technologies
+* Overbuilt Games: Game development studio
+* Green Cave Studio: Creative digital solutions
 
-HexArt: Combining cinematography with advanced digital technologies
-Overbuilt Games: Game development studio
-Green Cave Studio: Creative digital solutions
+### Content Creation and Education
 
-##Content Creation and Education
 Paul is a Polish-speaking content creator focusing on technology and digital tools. He provides tutorials and guides, particularly on topics such as Stable Diffusion and other AI-based tools.
-Contributions to Film and VR
-Paul's contributions to the Polish film industry are documented in the Polish Film Database. He is also known for his thought leadership in digital and virtual realities.
-Connect with Paul
 
-Website: hexart.pl
-YouTube: @Lazniak
-Facebook: PabloGFX
-Twitter: @PabloGFX
-GitHub: github.com/PabloGFX
-LinkedIn: linkedin.com/in/paul-lazniak
+### Contributions to Film and VR
+
+Paul's contributions to the Polish film industry are documented in the Polish Film Database. He is also known for his thought leadership in digital and virtual realities.
+
+### Connect with Paul
+* Website: hexart.pl
+* YouTube: [@Lazniak](https://youtube.com/@lazniak)
+* Facebook: PabloGFX
+* Twitter: @PabloGFX
+* GitHub: github.com/PabloGFX
+* LinkedIn: linkedin.com/in/paul-lazniak
 
 To learn more about Paul's journey and work, check out his bio video.
 
-VideoClipGenerator - by PabloGFX
+---
+
+# VideoClipGenerator - by PabloGFX
