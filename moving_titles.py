@@ -65,7 +65,7 @@ class TextAlignment(str, Enum):
     RIGHT = "right"
 
 class FontManager:
-    """Manager dla fontów z auto-pobieraniem"""
+    """Manager dla fontów z auto-pobieraniem i obsługą custom fontów"""
     FONT_URLS = {
         'Roboto': 'https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Me5Q.ttf',
         'OpenSans': 'https://fonts.gstatic.com/s/opensans/v34/mem8YaGs126MiZpBA-U1Ug.ttf',
@@ -87,8 +87,17 @@ class FontManager:
         if not os.path.exists(self.fonts_cache_dir):
             os.makedirs(self.fonts_cache_dir)
 
-    def get_font(self, font_name: str, size: int = 32) -> ImageFont.FreeTypeFont:
-        """Pobiera font z cache lub pobiera z internetu"""
+    def get_font(self, font_name: str, size: int = 32, custom_font_path: str = None) -> ImageFont.FreeTypeFont:
+        """Pobiera font z cache, pobiera z internetu lub używa custom font"""
+        # If custom font path is provided and exists, use it
+        if custom_font_path and os.path.exists(custom_font_path):
+            try:
+                return ImageFont.truetype(custom_font_path, size)
+            except Exception as e:
+                logger.warning(f"Failed to load custom font from {custom_font_path}: {e}")
+                logger.info("Falling back to default font")
+        
+        # Use built-in font
         if font_name not in self.FONT_URLS:
             raise ValueError(f"Unknown font: {font_name}")
 
@@ -154,6 +163,27 @@ class MovingTitlesNode:
                     "tooltip": "Path to SRT subtitle file"
                 }),
                 "font_name": (list(FontManager.FONT_URLS.keys()),),
+                "font_size": ("INT", {
+                    "default": 32,
+                    "min": 8,
+                    "max": 200,
+                    "step": 1,
+                    "tooltip": "Font size in pixels"
+                }),
+                "max_lines": ("INT", {
+                    "default": 1,
+                    "min": 1,
+                    "max": 5,
+                    "step": 1,
+                    "tooltip": "Maximum number of lines to display at once. Lines will appear sequentially."
+                }),
+                "line_spacing": ("FLOAT", {
+                    "default": 1.2,
+                    "min": 0.5,
+                    "max": 3.0,
+                    "step": 0.1,
+                    "tooltip": "Spacing between lines (multiplier of font size)"
+                }),
                 "fps": ("FLOAT", {
                     "default": 24.0,
                     "min": 1.0,
@@ -181,6 +211,11 @@ class MovingTitlesNode:
                 }),
             },
             "optional": {
+                "custom_font_path": ("STRING", {
+                    "default": "",
+                    "multiline": False,
+                    "tooltip": "Path to custom .ttf or .otf font file. Leave empty to use built-in fonts."
+                }),
                 "audio_signal": ("AUDIO",),
                 "audio_sensitivity": ("FLOAT", {
                     "default": 1.0,
@@ -434,7 +469,11 @@ class MovingTitlesNode:
         active_subs = [sub for sub in subs 
                       if sub.start.ordinal/1000.0 <= current_time <= sub.end.ordinal/1000.0]
         
-        for sub in active_subs:
+        # Apply max_lines limit - take only the first max_lines subtitles
+        max_lines = params.get('max_lines', 1)
+        active_subs = active_subs[:max_lines]
+        
+        for idx, sub in enumerate(active_subs):
             # Calculate progress for animation
             progress = (current_time - sub.start.ordinal/1000.0) / \
                       (sub.end.ordinal/1000.0 - sub.start.ordinal/1000.0)
@@ -442,12 +481,18 @@ class MovingTitlesNode:
             # Get font
             font = self.fonts_manager.get_font(
                 params['font_name'],
-                size=params.get('font_size', 32)
+                size=params.get('font_size', 32),
+                custom_font_path=params.get('custom_font_path', None)
             )
             
-            # Calculate position
+            # Calculate line spacing
+            line_spacing = params.get('line_spacing', 1.2)
+            font_size = params.get('font_size', 32)
+            line_offset = idx * int(font_size * line_spacing)
+            
+            # Calculate position with multi-line offset
             base_x = int(params['position_x'] * frame_pil.width)
-            base_y = int(params['position_y'] * frame_pil.height)
+            base_y = int(params['position_y'] * frame_pil.height) + line_offset
             
             # Apply animation
             x, y = self.apply_animation(
